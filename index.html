@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>StackDome WireGuard Panel</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">StackDome <span>WireGuard</span></div>
+      <small>پنل مدیریت کلاینت‌های WireGuard</small>
+    </div>
+    <a class="ghost" href="https://cloud.stackdome.com/" target="_blank" rel="noopener">Cloud StackDome</a>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>مدیریت WireGuard</h1>
+        <p>ساخت و مدیریت پروفایل‌های کلاینت، مشاهده وضعیت و تولید کانفیگ.</p>
+      </div>
+      <button id="addBtn" class="primary">+ کلاینت جدید</button>
+    </section>
+
+    <section class="stats">
+      <div class="card"><b id="total">0</b><span>کل کلاینت‌ها</span></div>
+      <div class="card"><b id="active">0</b><span>فعال</span></div>
+      <div class="card"><b id="traffic">0 B</b><span>ترافیک ثبت‌شده</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>کلاینت‌ها</h2>
+        <input id="search" placeholder="جستجو..." aria-label="جستجو">
+      </div>
+      <div id="clients" class="clients"></div>
+      <div id="empty" class="empty">هنوز کلاینتی اضافه نشده است.</div>
+    </section>
+
+    <section class="panel api">
+      <h2>تنظیم اتصال API</h2>
+      <p>برای اتصال واقعی به سرور، آدرس API بک‌اند خودت را وارد کن. این رابط هیچ توکن یا کلید خصوصی را داخل کد فرانت‌اند ذخیره نمی‌کند.</p>
+      <div class="api-row">
+        <input id="apiBase" placeholder="https://your-api.example.com/api">
+        <button id="saveApi" class="secondary">ذخیره</button>
+      </div>
+      <small id="apiStatus"></small>
+    </section>
+  </main>
+
+  <dialog id="modal">
+    <form method="dialog" id="clientForm" class="modal">
+      <button type="button" class="close" id="closeBtn">×</button>
+      <h2>کلاینت جدید</h2>
+      <label>نام
+        <input id="name" required placeholder="مثلاً Android-01">
+      </label>
+      <label>آدرس VPN
+        <input id="address" required placeholder="10.8.0.2/32">
+      </label>
+      <label>DNS
+        <input id="dns" value="1.1.1.1">
+      </label>
+      <label>Endpoint
+        <input id="endpoint" placeholder="vpn.example.com:51820">
+      </label>
+      <button class="primary" type="submit">ساخت پروفایل</button>
+    </form>
+  </dialog>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
